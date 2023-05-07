@@ -1,0 +1,11 @@
+body {
+    background-color: black;
+}
+h1 {
+    text-align: center;
+    padding-top: 335PX;
+    margin: auto;
+    color: white;
+    text-transform: capitalize;
+    text-shadow: 0.5ch;
+}

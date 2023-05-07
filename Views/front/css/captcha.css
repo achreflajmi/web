@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+
+body {
+    background: #fff;
+    font-family: "Roboto", arial, sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 1.8;
+    color: white;
+    position: relative;
+}
+
+#captchaBackground {
+    height: 220px;
+    width: 250px;
+    background-color: #cda45e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#captchaHeading {
+    color: #cda45e;
+}
+
+
+#captcha {
+    color:white;
+    height: 80%;
+    width: 80%;
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin: auto;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#submitButton {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 50px; }
+    .submitButton.submitButton-outline-white {
+      border: 2px solid #fff; }
+      .submitButton.submitButton-outline-white:hover {
+        border: 2px solid transparent;
+        background: #000;
+        color: #fff; }
+    .submitButton.submitButton-outline-white-primary {
+      border: 2px solid #fff; }
+      .submitButton.submitButton-outline-white-primary:hover {
+        border: 2px solid transparent;
+        background: #ffba5a;
+        color: #fff; }
+    .submitButton.uppercase {
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: .2em; }
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#refreshButton {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 50px; }
+    .refreshButton.submitButton-outline-white {
+      border: 2px solid #fff; }
+      .refreshButton.submitButton-outline-white:hover {
+        border: 2px solid transparent;
+        background: #000;
+        color: #fff; }
+    .refreshButton.submitButton-outline-white-primary {
+      border: 2px solid #fff; }
+      .submitButton.submitButton-outline-white-primary:hover {
+        border: 2px solid transparent;
+        background: #ffba5a;
+        color: #fff; }
+    .refreshButton.uppercase {
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: .2em; }
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#textBox {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 25px;
+}
+
+.incorrectCaptcha {
+    color: #FF0000;
+}
+
+.correctCaptcha {
+    color: #7FFF00;
+}

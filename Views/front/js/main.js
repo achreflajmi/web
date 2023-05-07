@@ -1,85 +1,58 @@
-(function($) {
-
-	"use strict";
 
 
-  // Form
-	var contactForm = function() {
-		if ($('#contactForm').length > 0 ) {
-			$( "#contactForm" ).validate( {
-				rules: {
-					name: "required",
-					subject: "required",
-					email: {
-						required: true,
-						email: true
-					},
-					message: {
-						required: true,
-						minlength: 5
-					}
-				},
-				messages: {
-					name: "Please enter your name",
-					subject: "Please enter your subject",
-					email: "Please enter a valid email address",
-					message: "Please enter a message"
-				},
-				/* submit via ajax */
-				
-				submitHandler: function(form) {		
-					var $submit = $('.submitting'),
-						waitText = 'Submitting...';
+(function ($) {
+    "use strict";
 
-					$.ajax({   	
-				      type: "POST",
-				      url: "php/sendEmail.php",
-				      data: $(form).serialize(),
+    
+    /*==================================================================
+    [ Validate ]*/
+    var input = $('.validate-input .input100');
 
-				      beforeSend: function() { 
-				      	$submit.css('display', 'block').text(waitText);
-				      },
-				      success: function(msg) {
-		               if (msg == 'OK') {
-		               	$('#form-message-warning').hide();
-				            setTimeout(function(){
-		               		$('#contactForm').fadeOut();
-		               	}, 1000);
-				            setTimeout(function(){
-				               $('#form-message-success').fadeIn();   
-		               	}, 1400);
+    $('.validate-form').on('submit',function(){
+        var check = true;
 
-		               	// setTimeout(function(){
-				              //  $('#form-message-success').fadeOut();   
-		               	// }, 8000);
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
+            }
+        }
 
-		               	setTimeout(function(){
-				               $submit.css('display', 'none').text(waitText);  
-		               	}, 1400);
+        return check;
+    });
 
-		         //       	setTimeout(function(){
-		         //       		$( '#contactForm' ).each(function(){
-											//     this.reset();
-											// });
-		         //       	}, 1400);
-			               
-			            } else {
-			               $('#form-message-warning').html(msg);
-				            $('#form-message-warning').fadeIn();
-				            $submit.css('display', 'none');
-			            }
-				      },
-				      error: function() {
-				      	$('#form-message-warning').html("Something went wrong. Please try again.");
-				         $('#form-message-warning').fadeIn();
-				         $submit.css('display', 'none');
-				      }
-			      });    		
-		  		} // end submitHandler
 
-			});
-		}
-	};
-	contactForm();
+    $('.validate-form .input100').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+
+    function validate (input) {
+        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                return false;
+            }
+        }
+        else {
+            if($(input).val().trim() == ''){
+                return false;
+            }
+        }
+    }
+
+    function showValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).addClass('alert-validate');
+    }
+
+    function hideValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).removeClass('alert-validate');
+    }
+    
+    
 
 })(jQuery);
